@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+body {
+  background-color: #f2f8fb;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  height: 100px;
+  width: 400px;
+  margin: 50px auto;
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+}
+.container * {
+  position: relative;
+  z-index: 20;
+}
+.container .leftCol, .container .rightCol {
+  height: 100%;
+  width: 50%;
+  padding: 10px 20px;
+}
+.container .leftCol {
+  float: left;
+}
+.container .rightCol {
+  float: right;
+}
+.container .rightCol * {
+  text-align: right;
+}
+
+/* insides styling */
+.container i {
+  font-size: 18px;
+}
+.container p#conditions {
+  font-size: 20px;
+}
+.container i, .container p#conditions {
+  display: inline-block;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+.container p#temperature {
+  cursor: pointer;
+  display: block;
+  font-size: 42px;
+  margin: 0;
+}
+.container p#temperature:hover {
+  text-decoration: underline;
+}
+.container h4 {
+  font-size: 14px;
+  font-weight: normal;
+  margin-top: 0.1em;
+}
+.container h4#place {
+  margin-top: 1em;
+}
+.container h3 {
+  margin-top: 0.3em;
+}
+.container h3, .container h4 {
+  margin-bottom: 0;
+}
+
+/* common overlay styling */
+.overlay {
+  z-index: 10;
+  display: none;
+}
+
+/* sun overlay styling */
+.sunny {
+  background-color: #ec7263;
+}
+
+#sunOverlay:before, #sunOverlay:after {
+  content: "";
+}
+
+#sunOverlay {
+  background-color: #ed895b;
+  top: -80px;
+  right: -30px;
+  width: 240px;
+  height: 240px;
+}
+#sunOverlay:before {
+  background-color: #ee9b55;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+}
+#sunOverlay:after {
+  background-color: #efc745;
+  top: -10;
+  right: 10px;
+  width: 150px;
+  height: 150px;
+}
+
+#sunOverlay, #sunOverlay:before, #sunOverlay:after {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.sunny #sunOverlay {
+  display: block;
+  /* show sunOverlay when class sunny is applied */
+}
+
+/* snow overlay (get creative and use icons?) */
+.snowy {
+  background-color: #1c2f53;
+}
+
+#snowOverlay {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#snowOverlay .wi {
+  position: absolute;
+}
+#snowOverlay .wi:first-child {
+  font-size: 132px;
+  top: -70px;
+  right: 80px;
+  color: rgba(255, 255, 255, 0.35);
+}
+#snowOverlay .wi:nth-child(2) {
+  font-size: 42px;
+  top: 60px;
+  right: 180px;
+  color: rgba(255, 255, 255, 0.6);
+}
+#snowOverlay .wi:nth-child(3) {
+  font-size: 32px;
+  top: 5px;
+  right: 220px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.snowy #snowOverlay {
+  display: block;
+}
+
+/* rain overlay */
+.rainy {
+  background-color: #2a3259;
+}
+
+.rainy #rainOverlay {
+  display: block;
+}
+
+#rainOverlay {
+  position: relative;
+}
+#rainOverlay .wi-smog {
+  position: absolute;
+  color: #495073;
+  font-size: 248px;
+  top: -170px;
+  right: -50px;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+#rainOverlay .wi-smog:nth-child(2) {
+  opacity: 0.3;
+  top: -150px;
+  right: -40px;
+}
+#rainOverlay .raindrops {
+  position: relative;
+}
+#rainOverlay .raindrops > .wi-raindrop {
+  font-size: 46px;
+  position: absolute;
+  color: #495073;
+  right: 200px;
+  top: -10px;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+#rainOverlay .raindrops > .wi-raindrop.second {
+  opacity: 0.9;
+  font-size: 26px;
+  right: 240px;
+  top: 10px;
+}
+#rainOverlay .raindrops > .wi-raindrop.third {
+  opacity: 0.7;
+  font-size: 22px;
+  right: 220px;
+  top: 50px;
+}
+#rainOverlay .raindrops > span {
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background-color: #495073;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+#rainOverlay .raindrops > span:first-child {
+  left: 59%;
+  top: 50px;
+}
+#rainOverlay .raindrops > span:nth-child(2n) {
+  left: 65%;
+  top: 40px;
+}
+#rainOverlay .raindrops > span:nth-child(3n) {
+  left: 55%;
+  top: 10px;
+  height: 70px;
+}
+#rainOverlay .raindrops > span:nth-child(4n) {
+  left: 59%;
+  top: 23px;
+}
+#rainOverlay .raindrops > span:nth-child(5n) {
+  left: 70%;
+  top: 25px;
+}
+#rainOverlay .raindrops > span:nth-child(n+5) {
+  opacity: 0.5;
+  margin-left: 3px;
+  margin-top: 10px;
+}
+
+/* wind overlay */
+.windy {
+  background-color: #f7a75b;
+}
+
+.windy #windOverlay {
+  display: block;
+}
+
+#windOverlay {
+  position: relative;
+}
+#windOverlay .wi-sandstorm, #windOverlay .wi-windy {
+  position: absolute;
+}
+#windOverlay .wi-raindrop {
+  font-size: 280px;
+  color: #fcc18a;
+  top: -300px;
+  right: -280px;
+}
+#windOverlay .wi-raindrop:first-child {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+#windOverlay .wi-raindrop:nth-child(2) {
+  -webkit-transform: rotate(130deg);
+          transform: rotate(130deg);
+  top: -315px;
+  right: -10px;
+  opacity: 0.7;
+}
+#windOverlay .wi-windy {
+  font-size: 200px;
+  color: #fabc82;
+  top: -50px;
+  right: 150px;
+}
